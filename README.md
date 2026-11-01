@@ -1,8 +1,14 @@
+# Learning Path — Version 2
+
+**Start with [SETUP_V2.md](SETUP_V2.md).** Version 2 requires a configured Supabase project and provisioned accounts before student/admin login works. No default passwords are included.
+
+The application uses Supabase authentication and a database for private student progress. Follow the setup guide before starting or deploying the website.
+
 # Learning Path
 
 A browser-based Python learning platform with an adaptive activity policy, a syllabus sidebar, lessons, MCQs, executable coding exercises and a learning map. Other subjects are visibly marked “Coming later”.
 
-## Start here — no notebook, API key or npm install needed
+## Run locally after database setup
 
 1. Extract the ZIP. Open the **personalized-learning-path** folder.
 2. Install Python 3.10 or newer if you do not have it.
@@ -25,7 +31,8 @@ Do not double-click `web/index.html`: the app loads JSON and modules over HTTP. 
 - A mixed practice workspace with separate MCQ/coding filters and difficulty selection.
 - Grey/red/yellow/green syllabus indicators, with text labels. MCQ and coding estimates are separate.
 - A trained Q-learning policy from **8,000 simulated episodes** (45 steps each), runnable training/evaluation source, and baseline comparisons.
-- Browser-local progress, code drafts, export/import backups and reset. No user accounts or cross-device sync.
+- Authenticated student accounts, private database progress and code drafts, export/import backups and reset.
+- Protected administrator catalog management, student topic requests and topic video links.
 - CI validation, optional GitHub Pages deployment, downloadable CI source artifact and a manual candidate-policy training pipeline.
 
 ## Upload to GitHub
@@ -47,11 +54,11 @@ Replace YOUR_USERNAME. Authenticate using GitHub’s normal browser/Git credenti
 ## Enable deployment once you are ready
 
 1. Open repository **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-2. Under **Settings → Secrets and variables → Actions → Variables**, add repository variable `ENABLE_PAGES` with value `true`.
+2. Under **Settings → Secrets and variables → Actions → Variables**, set `SUPABASE_URL` and `SUPABASE_ANON_KEY` to your public project connection settings, then add `ENABLE_PAGES` with value `true`. Never put a service-role or secret key here.
 3. Open **Actions → Test and deploy Learning Path → Run workflow**, or push a commit to `main`.
 4. Tests run first. Deployment runs only after they pass. GitHub provides the final URL in the deployment job.
 
-Before step 2, deployment is deliberately skipped and CI still runs. This avoids a failing Pages deploy before your repository is configured. GitHub Pages availability depends on your repository/account settings. The app uses relative asset URLs, so repository subpaths work. You do not need a backend, secret API key or paid hosting service for this version.
+Before step 2, deployment is deliberately skipped and CI still runs. This avoids a failing Pages deploy before your repository is configured. GitHub Pages availability depends on your repository/account settings. The app uses relative asset URLs, so repository subpaths work. This version requires the Supabase backend configured in SETUP_V2.md. Only public connection settings belong in the deployed website.
 
 ## Development and checks
 
@@ -96,4 +103,4 @@ In the website, reading a lesson does not increase mastery. Assisted attempts an
 
 ## Current boundaries
 
-No chatbot, video scraping, accounts, cloud database or teacher portal. Browser storage can be cleared; export a backup. Runtime loading depends on the external CDN. Coding checks test outputs, not whether a solution truly uses a requested OOP/recursion technique; those need code review. No protected third-party question bank was copied. Additional subjects need reviewed content, scoring rules and validation of the learning model; a placeholder is not an implemented course.
+No chatbot, PDF-generated courses, video scraping or teacher portal. Version 2 includes accounts, a cloud database and administrator catalog management. Check the save indicator before leaving a session and export backups when needed. Runtime loading depends on the external CDN. Coding checks test outputs, not whether a solution truly uses a requested OOP/recursion technique; those need code review. No protected third-party question bank was copied. Additional subjects need reviewed content, scoring rules and validation of the learning model; a placeholder is not an implemented course.
