@@ -1,0 +1,69 @@
+{
+  "note": "Synthetic hidden-mastery metrics; not real student learning gains. Same seeds and budgets; policy actions alter random draw paths. Shift changes learning/forgetting assumptions. Fixed schedule is prerequisite-constrained. No automatic claim that RL wins.",
+  "results": [
+    {
+      "setting": 1.0,
+      "method": "rl",
+      "n": 100,
+      "mean_hidden_mastery_gain": 0.06961916755448688,
+      "sd_gain": 0.022836529974806258,
+      "mean_simulated_retention": 0.23496048191433602
+    },
+    {
+      "setting": 1.0,
+      "method": "random",
+      "n": 100,
+      "mean_hidden_mastery_gain": 0.0481764088599357,
+      "sd_gain": 0.015533092265707113,
+      "mean_simulated_retention": 0.21413451912287693
+    },
+    {
+      "setting": 1.0,
+      "method": "rules",
+      "n": 100,
+      "mean_hidden_mastery_gain": 0.05602102225070013,
+      "sd_gain": 0.019979358506609247,
+      "mean_simulated_retention": 0.2217483922643084
+    },
+    {
+      "setting": 1.0,
+      "method": "fixed",
+      "n": 100,
+      "mean_hidden_mastery_gain": 0.023349640989356473,
+      "sd_gain": 0.0123710048096698,
+      "mean_simulated_retention": 0.1900301802404935
+    },
+    {
+      "setting": 1.5,
+      "method": "rl",
+      "n": 100,
+      "mean_hidden_mastery_gain": 0.09337222773153693,
+      "sd_gain": 0.030391329128568016,
+      "mean_simulated_retention": 0.25413544891644135
+    },
+    {
+      "setting": 1.5,
+      "method": "random",
+      "n": 100,
+      "mean_hidden_mastery_gain": 0.06052723728699371,
+      "sd_gain": 0.019697404693680427,
+      "mean_simulated_retention": 0.22277007135890203
+    },
+    {
+      "setting": 1.5,
+      "method": "rules",
+      "n": 100,
+      "mean_hidden_mastery_gain": 0.07561932441523407,
+      "sd_gain": 0.028272490566709628,
+      "mean_simulated_retention": 0.2371741630234166
+    },
+    {
+      "setting": 1.5,
+      "method": "fixed",
+      "n": 100,
+      "mean_hidden_mastery_gain": 0.03243179207208026,
+      "sd_gain": 0.026358751085537643,
+      "mean_simulated_retention": 0.1959051557310718
+    }
+  ]
+}
