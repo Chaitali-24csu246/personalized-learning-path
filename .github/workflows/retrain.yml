@@ -1,0 +1,33 @@
+name: Train a candidate policy
+on:
+  workflow_dispatch:
+    inputs:
+      episodes:
+        description: Number of training episodes
+        required: true
+        default: '8000'
+        type: choice
+        options: ['2000', '8000', '16000']
+permissions:
+  contents: read
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Train reproducibly
+        env:
+          EPISODES: ${{ inputs.episodes }}
+        run: python training/train.py --episodes "$EPISODES" --seed 42
+      - run: python -m unittest discover -s tests -v
+      - run: python training/evaluate.py --learners 100
+      - uses: actions/upload-artifact@v4
+        with:
+          name: candidate-policy-and-evaluation
+          path: |
+            web/policy.json
+            training/evaluation.json
+# Candidate artifacts never overwrite or deploy the production policy automatically.
