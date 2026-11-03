@@ -1,0 +1,62 @@
+{
+  "basics": {
+    "id": "khKv-8q7YmY",
+    "title": "Integers and floats \u2014 Corey Schafer"
+  },
+  "types": {
+    "id": "khKv-8q7YmY",
+    "title": "Numeric types \u2014 Corey Schafer"
+  },
+  "conditions": {
+    "id": "DZwmZ8Usvnk",
+    "title": "Conditionals and booleans \u2014 Corey Schafer"
+  },
+  "loops": {
+    "id": "6iF8Xb7Z3wQ",
+    "title": "Loops and iterations \u2014 Corey Schafer"
+  },
+  "strings": {
+    "id": "k9TUPpGqYTo",
+    "title": "Strings \u2014 Corey Schafer"
+  },
+  "lists": {
+    "id": "W8KRzm-HUcc",
+    "title": "Lists, tuples and sets \u2014 Corey Schafer"
+  },
+  "dicts": {
+    "id": "daefaLgNkw0",
+    "title": "Dictionaries \u2014 Corey Schafer"
+  },
+  "functions": {
+    "id": "9Os0o3wzS_I",
+    "title": "Functions \u2014 Corey Schafer"
+  },
+  "errors": {
+    "id": "NIWwJbo-9_8",
+    "title": "Try/except error handling \u2014 Corey Schafer"
+  },
+  "oop": {
+    "id": "ZDa-Z5JzLYM",
+    "title": "Classes and instances \u2014 Corey Schafer"
+  },
+  "inheritance": {
+    "id": "RSl87lqOXDE",
+    "title": "Inheritance \u2014 Corey Schafer"
+  },
+  "testing": {
+    "id": "6tNS--WetLI",
+    "title": "Unit testing \u2014 Corey Schafer"
+  },
+  "generators": {
+    "id": "bD05uGo_sVI",
+    "title": "Generators \u2014 Corey Schafer"
+  },
+  "modules": {
+    "id": "CqvZ3vGoGs0",
+    "title": "Modules and standard library \u2014 Corey Schafer"
+  },
+  "async": {
+    "id": "Qb9s3UiMSTA",
+    "title": "Asyncio \u2014 Tech With Tim"
+  }
+}
