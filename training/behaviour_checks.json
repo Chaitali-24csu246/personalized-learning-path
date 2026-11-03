@@ -1,0 +1,92 @@
+{
+  "note": "Controlled profile checks of the shipped policy. Actual recommendations depend on complete state, item availability and recent history. These checks are not evidence of real educational benefit.",
+  "checks": [
+    {
+      "scenario": "weak concepts",
+      "fixture": "same MCQ/coding estimates across topics; six prior attempts per topic",
+      "mcq": 0.2,
+      "code": 0.85,
+      "load": 0,
+      "topic": "loops",
+      "action": {
+        "type": "mcq",
+        "difficulty": 1
+      },
+      "source": "policy"
+    },
+    {
+      "scenario": "weak coding",
+      "fixture": "same MCQ/coding estimates across topics; six prior attempts per topic",
+      "mcq": 0.85,
+      "code": 0.2,
+      "load": 0,
+      "topic": "loops",
+      "action": {
+        "type": "code",
+        "difficulty": 1
+      },
+      "source": "policy"
+    },
+    {
+      "scenario": "beginner",
+      "fixture": "same MCQ/coding estimates across topics; six prior attempts per topic",
+      "mcq": 0.3,
+      "code": 0.3,
+      "load": 0,
+      "topic": "loops",
+      "action": {
+        "type": "mcq",
+        "difficulty": 1
+      },
+      "source": "policy"
+    },
+    {
+      "scenario": "medium",
+      "fixture": "same MCQ/coding estimates across topics; six prior attempts per topic",
+      "mcq": 0.5,
+      "code": 0.5,
+      "load": 0,
+      "topic": "loops",
+      "action": {
+        "type": "code",
+        "difficulty": 2
+      },
+      "source": "policy"
+    },
+    {
+      "scenario": "strong",
+      "fixture": "same MCQ/coding estimates across topics; six prior attempts per topic",
+      "mcq": 0.8,
+      "code": 0.8,
+      "load": 0,
+      "topic": "loops",
+      "action": {
+        "type": "code",
+        "difficulty": 3
+      },
+      "source": "policy"
+    },
+    {
+      "scenario": "strong with demanding recent practice",
+      "fixture": "same MCQ/coding estimates across topics; six prior attempts per topic",
+      "mcq": 0.8,
+      "code": 0.8,
+      "load": 0.8,
+      "topic": "loops",
+      "action": {
+        "type": "mcq",
+        "difficulty": 1
+      },
+      "source": "policy"
+    },
+    {
+      "scenario": "last topic has coding gap, all earlier topics strong",
+      "expectedTopic": "async",
+      "recommendedTopic": "async",
+      "action": {
+        "type": "code",
+        "difficulty": 1
+      }
+    }
+  ]
+}

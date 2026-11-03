@@ -1,69 +1,222 @@
 {
-  "note": "Synthetic hidden-mastery metrics; not real student learning gains. Same seeds and budgets; policy actions alter random draw paths. Shift changes learning/forgetting assumptions. Fixed schedule is prerequisite-constrained. No automatic claim that RL wins.",
+  "note": "Synthetic results only. Same held-out seeds and budgets; actions alter random draw streams. CF uses training seeds 120000\u2013120159 only. Load is a design proxy, not measured fatigue. zero_weights tests dependence on learned scores.",
+  "policy": "candidate-dqn-v3",
   "results": [
     {
       "setting": 1.0,
       "method": "rl",
       "n": 100,
-      "mean_hidden_mastery_gain": 0.06961916755448688,
-      "sd_gain": 0.022836529974806258,
-      "mean_simulated_retention": 0.23496048191433602
+      "mean_hidden_mastery_gain": 0.03379478295670796,
+      "sd_gain": 0.025360472933279747,
+      "mean_simulated_retention": 0.4789028351754175,
+      "mean_load_proxy": 0.2614,
+      "actions": {
+        "0": 624,
+        "1": 715,
+        "2": 523,
+        "3": 112,
+        "4": 488,
+        "5": 456,
+        "6": 82
+      }
     },
     {
       "setting": 1.0,
       "method": "random",
       "n": 100,
-      "mean_hidden_mastery_gain": 0.0481764088599357,
-      "sd_gain": 0.015533092265707113,
-      "mean_simulated_retention": 0.21413451912287693
+      "mean_hidden_mastery_gain": 0.006169037795469385,
+      "sd_gain": 0.01589221594168761,
+      "mean_simulated_retention": 0.45190654316694046,
+      "mean_load_proxy": 0.7696000000000001,
+      "actions": {
+        "0": 321,
+        "1": 500,
+        "2": 495,
+        "3": 501,
+        "4": 370,
+        "5": 404,
+        "6": 409
+      }
     },
     {
       "setting": 1.0,
       "method": "rules",
       "n": 100,
-      "mean_hidden_mastery_gain": 0.05602102225070013,
-      "sd_gain": 0.019979358506609247,
-      "mean_simulated_retention": 0.2217483922643084
+      "mean_hidden_mastery_gain": 0.015864782214215906,
+      "sd_gain": 0.01841072923839783,
+      "mean_simulated_retention": 0.46138157256773227,
+      "mean_load_proxy": 0.15380000000000002,
+      "actions": {
+        "0": 0,
+        "1": 1271,
+        "2": 293,
+        "3": 22,
+        "4": 1127,
+        "5": 251,
+        "6": 36
+      }
     },
     {
       "setting": 1.0,
       "method": "fixed",
       "n": 100,
-      "mean_hidden_mastery_gain": 0.023349640989356473,
-      "sd_gain": 0.0123710048096698,
-      "mean_simulated_retention": 0.1900301802404935
+      "mean_hidden_mastery_gain": 0.007574056204710902,
+      "sd_gain": 0.01599277570247436,
+      "mean_simulated_retention": 0.45327598266316355,
+      "mean_load_proxy": 0.29580000000000006,
+      "actions": {
+        "0": 705,
+        "1": 705,
+        "2": 515,
+        "3": 294,
+        "4": 252,
+        "5": 251,
+        "6": 278
+      }
+    },
+    {
+      "setting": 1.0,
+      "method": "collaborative_filtering",
+      "n": 100,
+      "mean_hidden_mastery_gain": 0.00015561921995612576,
+      "sd_gain": 0.013808296615372638,
+      "mean_simulated_retention": 0.44603329891212146,
+      "mean_load_proxy": 0.8748,
+      "actions": {
+        "0": 0,
+        "1": 419,
+        "2": 1447,
+        "3": 591,
+        "4": 277,
+        "5": 221,
+        "6": 45
+      }
+    },
+    {
+      "setting": 1.0,
+      "method": "zero_weights",
+      "n": 100,
+      "mean_hidden_mastery_gain": 0.00038621179976166,
+      "sd_gain": 0.013967102928187258,
+      "mean_simulated_retention": 0.4462511756702428,
+      "mean_load_proxy": 0.19060000000000002,
+      "actions": {
+        "0": 1193,
+        "1": 800,
+        "2": 708,
+        "3": 181,
+        "4": 65,
+        "5": 53,
+        "6": 0
+      }
     },
     {
       "setting": 1.5,
       "method": "rl",
       "n": 100,
-      "mean_hidden_mastery_gain": 0.09337222773153693,
-      "sd_gain": 0.030391329128568016,
-      "mean_simulated_retention": 0.25413544891644135
+      "mean_hidden_mastery_gain": 0.05002652942914569,
+      "sd_gain": 0.03747827650890025,
+      "mean_simulated_retention": 0.48877980749409555,
+      "mean_load_proxy": 0.24240000000000003,
+      "actions": {
+        "0": 556,
+        "1": 755,
+        "2": 527,
+        "3": 111,
+        "4": 520,
+        "5": 449,
+        "6": 82
+      }
     },
     {
       "setting": 1.5,
       "method": "random",
       "n": 100,
-      "mean_hidden_mastery_gain": 0.06052723728699371,
-      "sd_gain": 0.019697404693680427,
-      "mean_simulated_retention": 0.22277007135890203
+      "mean_hidden_mastery_gain": 0.00918893468502365,
+      "sd_gain": 0.023452139657015203,
+      "mean_simulated_retention": 0.44932173098461115,
+      "mean_load_proxy": 0.759,
+      "actions": {
+        "0": 317,
+        "1": 503,
+        "2": 504,
+        "3": 485,
+        "4": 371,
+        "5": 409,
+        "6": 411
+      }
     },
     {
       "setting": 1.5,
       "method": "rules",
       "n": 100,
-      "mean_hidden_mastery_gain": 0.07561932441523407,
-      "sd_gain": 0.028272490566709628,
-      "mean_simulated_retention": 0.2371741630234166
+      "mean_hidden_mastery_gain": 0.02161774143512761,
+      "sd_gain": 0.026218161200372646,
+      "mean_simulated_retention": 0.4613190060297795,
+      "mean_load_proxy": 0.1486,
+      "actions": {
+        "0": 0,
+        "1": 1211,
+        "2": 312,
+        "3": 21,
+        "4": 1148,
+        "5": 272,
+        "6": 36
+      }
     },
     {
       "setting": 1.5,
       "method": "fixed",
       "n": 100,
-      "mean_hidden_mastery_gain": 0.03243179207208026,
-      "sd_gain": 0.026358751085537643,
-      "mean_simulated_retention": 0.1959051557310718
+      "mean_hidden_mastery_gain": 0.010131167604137912,
+      "sd_gain": 0.023600785405776224,
+      "mean_simulated_retention": 0.4502285559032849,
+      "mean_load_proxy": 0.28620000000000007,
+      "actions": {
+        "0": 671,
+        "1": 695,
+        "2": 508,
+        "3": 305,
+        "4": 265,
+        "5": 264,
+        "6": 292
+      }
+    },
+    {
+      "setting": 1.5,
+      "method": "collaborative_filtering",
+      "n": 100,
+      "mean_hidden_mastery_gain": 9.213210148293886e-05,
+      "sd_gain": 0.02057904186381585,
+      "mean_simulated_retention": 0.4405388226568556,
+      "mean_load_proxy": 0.8804000000000001,
+      "actions": {
+        "0": 0,
+        "1": 395,
+        "2": 1491,
+        "3": 569,
+        "4": 276,
+        "5": 218,
+        "6": 51
+      }
+    },
+    {
+      "setting": 1.5,
+      "method": "zero_weights",
+      "n": 100,
+      "mean_hidden_mastery_gain": -0.0034404393194877444,
+      "sd_gain": 0.01829521190377098,
+      "mean_simulated_retention": 0.43711196441267824,
+      "mean_load_proxy": 0.2078,
+      "actions": {
+        "0": 1149,
+        "1": 800,
+        "2": 710,
+        "3": 201,
+        "4": 76,
+        "5": 64,
+        "6": 0
+      }
     }
   ]
 }

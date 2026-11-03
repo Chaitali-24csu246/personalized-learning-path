@@ -1,0 +1,41 @@
+{
+  "note": "Reward ablation: same architecture, seed 42, 8000 episodes and training environment; only explicit reward shaping disabled for learning_gain_only. Both environments retain challenge-dependent learning and load assumptions. Synthetic outcomes, not real efficacy.",
+  "results": [
+    {
+      "setting": 1.0,
+      "policy": "productive_struggle",
+      "n": 100,
+      "mean_hidden_mastery_gain": 0.03379478295670796,
+      "sd_gain": 0.025360472933279747,
+      "mean_simulated_retention": 0.4789028351754175,
+      "mean_load_proxy": 0.2614
+    },
+    {
+      "setting": 1.0,
+      "policy": "learning_gain_only",
+      "n": 100,
+      "mean_hidden_mastery_gain": 0.03387983254366137,
+      "sd_gain": 0.02558203635551579,
+      "mean_simulated_retention": 0.4789881249955566,
+      "mean_load_proxy": 0.226
+    },
+    {
+      "setting": 1.5,
+      "policy": "productive_struggle",
+      "n": 100,
+      "mean_hidden_mastery_gain": 0.05002652942914569,
+      "sd_gain": 0.03747827650890025,
+      "mean_simulated_retention": 0.48877980749409555,
+      "mean_load_proxy": 0.24240000000000003
+    },
+    {
+      "setting": 1.5,
+      "policy": "learning_gain_only",
+      "n": 100,
+      "mean_hidden_mastery_gain": 0.04911049994726472,
+      "sd_gain": 0.036720145545211684,
+      "mean_simulated_retention": 0.4879010421484692,
+      "mean_load_proxy": 0.2326
+    }
+  ]
+}
