@@ -1,0 +1,105 @@
+{
+  "version": "3.0.0",
+  "based_on": "Supplied personalized-learning-path-v2.zip",
+  "date": "2026-11-03",
+  "files": [
+    {
+      "path": ".github/workflows/ci-cd.yml",
+      "sha256": "c424d40fb17a52c6f69dc6e8cfe97fc729cb6bee2b2d3bafd733ce2ad0c407d3",
+      "v2_sha256": "6de582878fd3ca87ccc5062cbefede5291eac9589eb2b7c1253b31005c5ecf58"
+    },
+    {
+      "path": ".github/workflows/retrain.yml",
+      "sha256": "ebcedffab37792459ee4cc5f4d147b1c56de4b82f95f5678c8046a0f36d8a598",
+      "v2_sha256": "6eba4aed3d2cda59d838b1bd748cf70d1c8057f8a7f32af5f1c9d1f280c2ad49"
+    },
+    {
+      "path": "UPGRADE_V3.md",
+      "sha256": "3fbff853c30af71ac49c80e92a9d7bec54a09cc54f1b38f676dc126d98ef6f17",
+      "v2_sha256": null
+    },
+    {
+      "path": "package.json",
+      "sha256": "94317a5c0a841ce997d2f74ef6e7f15725733efd2be7158e61c70bfefc9a98b7",
+      "v2_sha256": "198f07a618a3bbecd2af6b19ed91c1f0fc3a6fdc0d07a5a54d8e4327541d1f93"
+    },
+    {
+      "path": "tests/app.test.mjs",
+      "sha256": "4e8e1794721e6d50dd91eccbcb622211d82febfaa9027267662db8215ea65b40",
+      "v2_sha256": null
+    },
+    {
+      "path": "tests/engine.test.mjs",
+      "sha256": "40d8d1648dc98a2cc0f12ab0bad93351d38e7d1f88637fcacd0cc5708433a3f8",
+      "v2_sha256": "2fff731aece68d5f55159a9504a365f5e7b09ef92c9b1a4bcd267467c5bfb304"
+    },
+    {
+      "path": "tests/test_project.py",
+      "sha256": "b8f63088c82c9d695f1602be730bd0f77b932f4a9ecebd001aab39fdf331d4db",
+      "v2_sha256": "dd1aea0022b7202625f60b19ee575cdd71763472c6f2622f197525a8cc4e841b"
+    },
+    {
+      "path": "training/behaviour_checks.json",
+      "sha256": "d8c630031caf66795a762ff8755b16d7f67790e4d9097dec089b8fd9591c7d91",
+      "v2_sha256": null
+    },
+    {
+      "path": "training/engine.py",
+      "sha256": "e5b6359160349b38b88f0244262a326509fdebe7a10fe7ac1bf5855fc8d514f5",
+      "v2_sha256": "7b9a522e153ba6659e1ccb982173f99cb4164f091c7df37134ad793bf1eef74f"
+    },
+    {
+      "path": "training/evaluate.py",
+      "sha256": "b0a33bf570a5dd3ebfeb74d78c7a98d44a8fc00cbe82a7d8d185f654a3456093",
+      "v2_sha256": "38fc882df32a3c997669586ebe523d36f13500b1011d762569704bf4368634fb"
+    },
+    {
+      "path": "training/evaluation.json",
+      "sha256": "2dee7a7010294a66971f174ea5f82f9b0423a3c234f5ae495d0f729da566ecab",
+      "v2_sha256": "7f23eb1265b6aa178f9679b3798a6f01bdc6e91284584ed6074686d2c1360007"
+    },
+    {
+      "path": "training/requirements.txt",
+      "sha256": "7bd6b8946940b79948c548c8048e545684b91c8edc9444d8dfc0c8f76a97c0a7",
+      "v2_sha256": null
+    },
+    {
+      "path": "training/reward_ablation.json",
+      "sha256": "844e5c3638b896d42bb41d44c55fc0b5524cc40f71988af54b65632a6aa03c85",
+      "v2_sha256": null
+    },
+    {
+      "path": "training/train.py",
+      "sha256": "82ffe3aa7c078d0f64bb2e7c4374b6cf950afaf2b4ad5ab9f2e674b1c1940b6a",
+      "v2_sha256": "fb692193e8fe2095b95f8c034ba930bb62c9cb5f2df7d18346df9aaa5de14e08"
+    },
+    {
+      "path": "web/app.mjs",
+      "sha256": "6730196129cae40684da1f67d1777126cb2532092a1f8b24b766631c222fcc8e",
+      "v2_sha256": "cbec5216798a8c58579d205b49038008fffb041d05be708ae16877691eec33fe"
+    },
+    {
+      "path": "web/engine.mjs",
+      "sha256": "ffaee29f34aab56d2b8b63390a788ceef8ebc672320da4f36a74fffa49a1ef0b",
+      "v2_sha256": "1ba1e1b75f69d8174d0a1a2e2089fe080763f887d89e10358bf5a467cb8db431"
+    },
+    {
+      "path": "web/policy.json",
+      "sha256": "1bfbc6f53128846fc62d7e5cdce367b3006cf822c5ff63cb821b155507e75287",
+      "v2_sha256": "43471c6713a5a4c51015b1dce5bfc3a690e0a66d9757093a46ef46aaebd5c9db"
+    },
+    {
+      "path": "web/styles.css",
+      "sha256": "116df5535b75423fa1e8c111ed8376c8b5b06d02c6f4f91b53ec4210f32613bf",
+      "v2_sha256": "a4c7f2c44a2970bdd084a5961ea414ac7bb4e953d777d6b9ad78852fe527eb96"
+    }
+  ],
+  "validation": {
+    "python_tests_passed": 14,
+    "javascript_tests_passed": 45,
+    "browser": "Desktop/mobile and full diagnostic with real Pyodide from local pinned assets; Supabase mocked",
+    "live_database_verified": false,
+    "content_unchanged": true
+  },
+  "instructions": "Merge these files into your existing V2 project. Read UPGRADE_V3.md. Do not replace entire directories or reset your database."
+}
