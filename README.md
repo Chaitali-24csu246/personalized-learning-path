@@ -1,106 +1,90 @@
-# Learning Path — Version 2
+# Personalized Learning Path Agent — Version 3
 
-**Start with [SETUP_V2.md](SETUP_V2.md).** Version 2 requires a configured Supabase project and provisioned accounts before student/admin login works. No default passwords are included.
+A browser-based adaptive Python learning platform. A trained Double DQN policy recommends the next learning activity based on each student's evolving progress.
 
-The application uses Supabase authentication and a database for private student progress. Follow the setup guide before starting or deploying the website.
+**Team:** Vanshika, Vasvi, Chaitali, Srishti
 
-# Learning Path
+- Demo: https://huggingface.co/spaces/Chaitali-24csu246/personalized-learning-path
+- Deployment guide: see the Cutover Document (Azure Static Web Apps)
+- Upgrade notes: [UPGRADE_V3.md](UPGRADE_V3.md)
 
-A browser-based Python learning platform with an adaptive activity policy, a syllabus sidebar, lessons, MCQs, executable coding exercises and a learning map. Other subjects are visibly marked “Coming later”.
+Login requires the existing Supabase project and provisioned accounts. No default passwords are included. See [SETUP_V2.md](SETUP_V2.md) for backend setup.
 
-## Run locally after database setup
+## What's new in V3
 
-1. Extract the ZIP. Open the **personalized-learning-path** folder.
-2. Install Python 3.10 or newer if you do not have it.
-3. Open a terminal in this folder and run:
+- A trained **Double DQN** scores eligible learning activities, replacing the V2 Q-table policy.
+- Starting assessment results shape the learner's initial recommendations.
+- Scored MCQ and coding attempts update shared topic progress.
+- Conceptual understanding and coding performance are tracked separately.
+- Practice adapts activity type and difficulty within a topic.
+- The learning map updates from current progress; future steps are provisional.
+- Evaluation compares the DQN against simpler recommendation approaches.
 
-```sh
-python start.py
+The course content, account system and Supabase database are unchanged from V2. No database recreation is needed.
+
+## Features
+
+- 20 Python units, from expressions to OOP, generators, decorators, testing and async.
+- 240 MCQs (180 practice, 60 reserved for assessment) and 60 coding exercises with automated output tests and two hint levels.
+- Lessons, worked examples, common mistakes and prerequisite metadata.
+- Executable coding practice in the browser (Pyodide in a Web Worker, 8-second timeout, stop button, output cap).
+- Authenticated student accounts with private progress and code drafts, plus export/import backups.
+- Protected administrator console for catalog management, topic requests and video links.
+
+## How the recommender works
+
+The Double DQN runs entirely in the browser from a frozen, saved policy (`web/policy.json`). It ranks eligible activities using the learner's current topic estimates. Student answers update those estimates, **not** the model weights.
+
+Prerequisites, scoring, content filtering and within-family item selection are deterministic application logic. Reading a lesson does not raise mastery, and repeated or assisted attempts do not earn unrestricted credit.
+
+The policy was trained on a simulated learner. Evaluation results (`training/evaluation.json`) show how it compares with baselines in simulation. They do not establish educational effectiveness with real students.
+
+## Run locally
+
+Requires Python 3.10+ and a running Supabase project.
+
+```
+python3 start.py --port 8001
 ```
 
-On macOS/Linux use `python3 start.py`. On Windows you may use `py -3 start.py` or double-click `START_WINDOWS.bat`. The site opens at **http://localhost:8000**. Keep the terminal open. Stop it with Ctrl+C. If the port is occupied, use `python start.py --port 8001`.
+On Windows use `python start.py --port 8001`. Open the address printed by the script. Don't open `web/index.html` directly, since the app loads modules over HTTP. Coding practice downloads Pyodide on first use, so it needs internet.
 
-Do not double-click `web/index.html`: the app loads JSON and modules over HTTP. Python execution in the browser downloads pinned Pyodide 0.27.7 from jsDelivr on first use. **Internet is required for coding execution.** Lessons, MCQs and the saved policy are included locally. The app runs user code in a Web Worker with an eight-second execution timeout, a stop button and an output cap. This is a personal practice runner, not a secure competitive grading service. Test expectations are inspectable in the browser. No server executes student code.
+## Deploy (Azure Static Web Apps)
 
-## What is included
+1. Confirm `main` contains V3 (`UPGRADE_V3.md`, `web/engine.mjs`, `candidate-dqn-v3` in `web/policy.json`).
+2. Confirm `web/config.js` holds the Supabase project URL and **public** anon key. Never commit secret or service-role keys.
+3. Create a Static Web App from this repo: branch `main`, build preset Custom, app location `web`, API and output locations blank.
+4. In the generated workflow, set `app_location: "web"`, `api_location: ""`, `output_location: ""`, `skip_app_build: true`.
+5. Open the generated HTTPS URL once the workflow succeeds.
 
-- 20 Python units from expressions through OOP, generators, decorators, context managers, testing and async.
-- 240 MCQs: 180 practice questions and 60 reserved assessment questions. Some are related input variants from the same code-tracing family; these are not 240 unrelated concepts.
-- 60 coding exercises, each with four automated output tests, two hint levels and a reference solution.
-- Original concise topic lessons, worked examples, common mistakes, prerequisite metadata and official-documentation links. This is a substantial course foundation, not a substitute for an entire textbook or educator review.
-- A mixed practice workspace with separate MCQ/coding filters and difficulty selection.
-- Grey/red/yellow/green syllabus indicators, with text labels. MCQ and coding estimates are separate.
-- A trained Q-learning policy from **8,000 simulated episodes** (45 steps each), runnable training/evaluation source, and baseline comparisons.
-- Authenticated student accounts, private database progress and code drafts, export/import backups and reset.
-- Protected administrator catalog management, student topic requests and topic video links.
-- CI validation, optional GitHub Pages deployment, downloadable CI source artifact and a manual candidate-policy training pipeline.
-
-## Upload to GitHub
-
-Create an empty repository named `personalized-learning-path` (avoid adding an initial README if you will push this folder). GitHub Desktop is easiest: **File → Add local repository**, choose the extracted folder, choose **create a repository here** if prompted, then commit all files and **Publish repository**. Check the repository root contains `README.md`, `web/`, `training/` and `.github/workflows/`.
-
-Alternatively, in the extracted project folder:
-
-```sh
-git init -b main
-git add .
-git commit -m "Build adaptive Python learning platform"
-git remote add origin https://github.com/YOUR_USERNAME/personalized-learning-path.git
-git push -u origin main
-```
-
-Replace YOUR_USERNAME. Authenticate using GitHub’s normal browser/Git credential flow; never put tokens in source files. **Do not upload just the ZIP**: GitHub needs its extracted contents, including the `.github` folder. Drag-and-drop uploads may omit hidden folders, so GitHub Desktop or `git add .` is safer.
-
-## Enable deployment once you are ready
-
-1. Open repository **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-2. Under **Settings → Secrets and variables → Actions → Variables**, set `SUPABASE_URL` and `SUPABASE_ANON_KEY` to your public project connection settings, then add `ENABLE_PAGES` with value `true`. Never put a service-role or secret key here.
-3. Open **Actions → Test and deploy Learning Path → Run workflow**, or push a commit to `main`.
-4. Tests run first. Deployment runs only after they pass. GitHub provides the final URL in the deployment job.
-
-Before step 2, deployment is deliberately skipped and CI still runs. This avoids a failing Pages deploy before your repository is configured. GitHub Pages availability depends on your repository/account settings. The app uses relative asset URLs, so repository subpaths work. This version requires the Supabase backend configured in SETUP_V2.md. Only public connection settings belong in the deployed website.
+Make sure the Supabase project is running before testing login. Hosting changes don't require migrating the database.
 
 ## Development and checks
 
-Python training/tests use the standard library only. JavaScript checks require Node 20+; the app itself does not require Node installed on a student’s computer.
-
-```sh
+```
 python -m unittest discover -s tests -v
 npm run check
 npm test
 python training/evaluate.py --learners 100
 ```
 
-Edit authored content in `scripts/build_content.py`, then run it to regenerate `web/content.json`. Run checks. A changed content file requires retraining to refresh the saved policy’s content hash:
-
-```sh
-python scripts/build_content.py
-python training/train.py --episodes 8000 --seed 42
-python training/evaluate.py --learners 100
-python -m unittest discover -s tests -v
-```
-
-Create a fresh distributable ZIP with `python scripts/package.py`. You may ignore Node commands when simply using the website.
-
-## How the adaptive component works
-
-`training/engine.py` implements a partially observed simulated learner. Conceptual and practical hidden knowledge vary separately, as do learning rates, forgetting, guessing and slips. Hidden knowledge is **not** supplied as policy input. The shared Q table ranks eligible `(topic, activity type, difficulty)` candidates using discretised observed MCQ/coding estimates, repeated failures, a review flag, session phase and whether a lesson was read. The temporal-difference update bootstraps future value (gamma 0.93), rather than selecting only immediate reward.
-
-This is a compact **state abstraction**, not a full Markov description of human learning. Simulated reward uses hidden learning gain, a per-step cost and terminal gain. These rewards are training assumptions, not measurable claims about a real student. The website uses the frozen saved policy; it updates learner estimates, not Q values, after student responses. Prerequisites, scoring, eligible content filtering and within-family item selection are deterministic application logic, not learned by RL. Unseen/exhausted states have an explicit fallback. Changing Q values changes recommendations; the JS integration test checks this.
-
-In the website, reading a lesson does not increase mastery. Assisted attempts and successfully completed question families do not repeatedly raise it. MCQ success does not update coding ability. Easy questions have a lower evidence ceiling. These estimates are simple heuristics rather than validated psychometric scores. The finite bank and help use can leave a learner needing more independent evidence; green status is never guaranteed by completion alone.
-
-`training/evaluation.json` compares RL, random, rule-based and prerequisite-constrained fixed paths on held-out seeds, with two simulator parameter settings. It reports both positive and negative results. It does not establish real educational benefits or superiority to commercial platforms. Simulated hidden mastery/retention is distinct from actual learner test scores. The UI’s optional checks reuse a reserved item set, so repeat scores can reflect familiarity. They are not independent pre/post experimental forms.
+Python training and tests use the standard library only. JavaScript checks need Node 20+. Node isn't needed to use the website. Content is authored in `scripts/build_content.py` and generated into `web/content.json`. If content changes, the policy must be retrained and re-evaluated before release. See UPGRADE_V3.md for the training workflow.
 
 ## Structure
 
-- `web/`: static website, content, trained policy, browser inference and Python worker.
-- `training/`: simulation, Q-learning, baseline evaluation and saved evaluation results.
-- `scripts/`: content authoring/generation and ZIP packaging.
-- `tests/`: reference-solution, question-answer, simulator and recommendation tests.
-- `.github/workflows/`: CI/CD and optional retraining.
-- `start.py`: cross-platform local server.
+- `web/`: static site, content, trained policy, browser inference, Python worker
+- `training/`: simulator, training, behaviour checks and evaluation
+- `scripts/`: content generation and packaging
+- `tests/`: solution, question, simulator and recommendation tests
+- `backend/`: Supabase-related setup
+- `.github/workflows/`: CI and deployment workflows
 
-## Current boundaries
+## Limitations
 
-No chatbot, PDF-generated courses, video scraping or teacher portal. Version 2 includes accounts, a cloud database and administrator catalog management. Check the save indicator before leaving a session and export backups when needed. Runtime loading depends on the external CDN. Coding checks test outputs, not whether a solution truly uses a requested OOP/recursion technique; those need code review. No protected third-party question bank was copied. Additional subjects need reviewed content, scoring rules and validation of the learning model; a placeholder is not an implemented course.
+- No chatbot, teacher portal or PDF-generated courses.
+- Only Python is implemented. Other subjects are marked "Coming later".
+- Coding tests check outputs, not whether a specific technique was used.
+- The in-browser runner is for personal practice, not secure grading.
+- Runtime depends on an external CDN for Pyodide.
+- Optional checks reuse a reserved item set, so repeat scores may reflect familiarity.
+- Deployment shows that the platform works. It does not demonstrate learning gains.
